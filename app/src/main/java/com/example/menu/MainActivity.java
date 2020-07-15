@@ -55,4 +55,16 @@ public class MainActivity extends AppCompatActivity {
         MenuInflater menuInflater=getMenuInflater();
         menuInflater.inflate(R.menu.floating_contextual_menu,menu);
     }
+
+    @Override
+    public boolean onContextItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.floatMenu1:
+                Toast.makeText(this, "context menu 1 selected", Toast.LENGTH_SHORT).show();
+                return  true;
+            default:
+                return super.onContextItemSelected(item);
+        }
+
+    }
 }
