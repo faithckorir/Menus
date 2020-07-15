@@ -4,22 +4,71 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.ActionMode;
 import android.view.ContextMenu;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
     private TextView textViewTitle;
+    private ActionMode actionMode;
+    private ActionMode.Callback actionModeCallback=new ActionMode.Callback() {
+        @Override
+        public boolean onCreateActionMode(ActionMode actionMode, Menu menu) {
+            MenuInflater menuInflater=getMenuInflater();
+            menuInflater.inflate(R.menu.context_action_menu,menu);
+            return true;
+        }
+
+        @Override
+        public boolean onPrepareActionMode(ActionMode actionMode, Menu menu) {
+
+           return false;
+        }
+
+        @Override
+        public boolean onActionItemClicked(ActionMode actionMode, MenuItem menuItem) {
+            switch (menuItem.getItemId()){
+                case R.id.delete:
+                    Toast.makeText(MainActivity.this, "Delete", Toast.LENGTH_SHORT).show();
+                    actionMode.finish();
+                return true;
+                default:
+                    return false;
+            }
+
+        }
+
+        @Override
+        public void onDestroyActionMode(ActionMode actionMode) {
+            actionMode=null;
+
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         textViewTitle=findViewById(R.id.textview);
+
+
+        Button button= findViewById(R.id.button);
+        button.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View view) {
+                if (actionMode!=null){
+                return false;}
+                //actionMode=startSupportActionMode((androidx.appcompat.view.ActionMode.Callback) actionModeCallback);
+                actionMode=startActionMode(actionModeCallback);
+                return  true;
+            }
+        });
         //register the context menu
 
         this.registerForContextMenu(textViewTitle);
@@ -67,4 +116,5 @@ public class MainActivity extends AppCompatActivity {
         }
 
     }
+
 }
