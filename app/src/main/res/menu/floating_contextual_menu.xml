@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:title="floating Contextual Menu 1"
+        android:id="@+id/floatMenu1"/>
+    <item android:title="floating Contextual Menu 2"
+        android:id="@+id/floatMenu2"/>
+
+</menu>
