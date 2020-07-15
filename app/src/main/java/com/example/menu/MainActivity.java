@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
 
         switch (item.getItemId()){
             case R.id.option1:
-                Toast.makeText(this, "Option 1 clicked!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Option one clicked!", Toast.LENGTH_SHORT).show();
                 return  true;
             default:
                 return super.onOptionsItemSelected(item);
