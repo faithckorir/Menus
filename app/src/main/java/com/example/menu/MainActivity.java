@@ -3,6 +3,7 @@ package com.example.menu;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.ActionMode;
 import android.view.ContextMenu;
@@ -119,10 +120,11 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
     }
 
     public void showPopUpMenu(View view) {
-        PopupMenu popupMenu=new PopupMenu(this,view);
+       /* PopupMenu popupMenu=new PopupMenu(this,view);
         popupMenu.setOnMenuItemClickListener(this);
 popupMenu.inflate(R.menu.pop_up_menu);
-popupMenu.show();
+popupMenu.show();*/
+       startActivity(new Intent(this,ListViewActivity.class));
     }
 
     @Override
